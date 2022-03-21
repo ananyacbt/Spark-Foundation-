@@ -11,14 +11,14 @@ import matplotlib.pyplot as plt       #for plotting purpose
 url = "http://bit.ly/w-data"
 student_data = pd.read_csv(url)  
 
-#print("Successfully we have imported data")
-#print(student_data)
+print("Successfully we have imported data")
+print(student_data)
 
 #Statistical Overview of the data 
 #to get numerical values like  count, mean value, standard daviation, min n max values, percentiles
-#print(student_data.describe())
+print(student_data.describe())
 #to check null values
-#print(student_data.isnull().sum())
+print(student_data.isnull().sum())
 
 # Step 2 - Plotted Graph to Visualize the dataset
 #to check relation btn variables hours and scores
@@ -27,7 +27,7 @@ student_data.plot(x = "Hours", y = "Scores", style = 'o' , color ="blue")
 plt.title("Hours Vs Percentages")
 plt.xlabel("Hours Studied")
 plt.ylabel("Percentage Score")
-#plt.show()
+plt.show()
 
 # step 3 - Data Preperation
 # prepare the data by extracting values from hour data into X variable and scores in Y variable
@@ -35,13 +35,13 @@ plt.ylabel("Percentage Score")
 X = student_data.iloc[:, :-1].values      #spliting the data using iloc function
 Y =student_data.iloc[:,1].values
 #number of hours studied
-#print(X)
+print(X)
 #Scores obtained
-#print(Y)
+print(Y)
 #split into test and train
 from sklearn.model_selection import train_test_split      
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.1,random_state=0)
-#print(X_train,X_test,Y_train,Y_test)
+print(X_train,X_test,Y_train,Y_test)
 
 # Step 4 - Training Algorithm
 #design and train machine learning model
@@ -57,11 +57,11 @@ line = regressor.coef_*X+regressor.intercept_
 #test data plotting
 plt.scatter(X,Y)
 plt.plot(X, line, color = "red")
-#plt.show()
+plt.show()
 
 # Step 5 - Make prediction - test hours predicted randomly
 
-#print(X_test)
+print(X_test)
 Y_pred = regressor.predict(X_test)
 
 #comparing actual vs predicted percentage
